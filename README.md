@@ -1,5 +1,5 @@
 # MimasA7-SLI-Offline
-A offline version of [MimasA7-SLI](https://github.com/Qishi-Hu/MimasA7-SLI)
+A offline version of [MimasA7-SLI](https://github.com/Qishi-Hu/MimasA7-SLI). Thsi repo is dedicated to SLI Pattern Generation using a SD card, without taking HDMI input. The logics are driven by the local FPGA clock instead of relying on the HDMI Rx clock.
 ## Directory Structure
 <pre>
 ├── README.md           # Overview of the repository  

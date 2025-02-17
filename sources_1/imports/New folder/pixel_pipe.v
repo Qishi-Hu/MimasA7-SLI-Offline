@@ -229,8 +229,8 @@ module pixel_pipe(
         en_R<=sw[7]; en_G<=sw[6]; en_B<=sw[5];
     end
     
-   assign out_red =  (in_blank? in_red: en_R?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 );  
-   assign out_green =(in_blank? in_green: en_G?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 ); 
-   assign out_blue = (in_blank? in_blue: en_B?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 );
+   assign out_red = mode? in_red:(in_blank? in_red: en_R?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 );  
+   assign out_green =mode? in_green:(in_blank? in_green: en_G?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 ); 
+   assign out_blue = mode? in_blue:(in_blank? in_blue: en_B?(frq==2'b11 ? (fra[0]?8'hFF:8'h00) : (ori?LUT[index]:LUT_V[indexV])  ): 8'h00 );
     assign out_hsync =in_hsync; assign out_vsync =in_vsync;  assign out_blank =in_blank; 
 endmodule

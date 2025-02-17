@@ -147,7 +147,7 @@ architecture Behavioral of SLI_Offline is
     );
     end component;
 
-
+    signal not_C1in1: std_logic;
     signal pixel_clk : std_logic;
     signal in_blank  : std_logic;
     signal in_hsync  : std_logic;
@@ -239,12 +239,15 @@ ref_clk_pll : ref_clk
 sd_cs <= sd_cs_buf; 
 sd_clk <= sd_clk_buf;
 
-
+process(in_vsync)
+    begin
+        not_C1in1<=not C1_in(1);
+    end process;
 i_processing: pixel_pipe Port map ( 
         clk => clk75, clk10 => clk10,
         en  =>  en, seg => seg, sw =>sw,
         trig =>trig, f_frm=> f_frm, 
-        mode=>C1_in(1), rdy=> C1_in(0),
+        mode=> not_C1in1, rdy=> C1_in(0),
         LUT_rdy => led (5),
         bt => BTNT & BTNL,
         --SD signals

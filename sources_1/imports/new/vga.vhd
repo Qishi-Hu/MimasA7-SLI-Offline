@@ -73,9 +73,9 @@ begin
       end if;
 
       if r.hCounter  < hRez and r.vCounter  < vRez then
-         n.red   <= n.hCounter(5 downto 0) & n.hCounter(5 downto 4);
-         n.green <= n.hCounter(7 downto 0);
-         n.blue  <= n.vCounter(7 downto 0);
+         n.red   <= (others => '0');
+         n.green <= (others => '0');
+         n.blue  <= (others => '0');
          n.blank <= '0';
       else
          n.red   <= (others => '0');
